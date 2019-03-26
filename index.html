@@ -192,6 +192,7 @@
     function doGuess() {
       var userGuess = document.getElementById("userGuess");
       var thisRoundAnswer = userGuess.value;
+      document.getElementById("userGuess").value = "";
       var existed = "";
       var aCount = 0;
       var bCount = 0;
@@ -199,8 +200,6 @@
         alert("( ￣ 3￣)y▂ξ 輸入錯誤");
         alert("( ￣ 3￣)y▂ξ 必須輸入4位數字");
         return;
-      }
-      else {
       }
       if (thisRoundAnswer.length != 4) {
         alert("( ￣ 3￣)y▂ξ 必須輸入4位數字");
@@ -226,13 +225,17 @@
         var done = document.getElementById("guessResults");
         guessResults.innerHTML += '<li class="list-group-item"><span class="label label-success">' + ab + '</span>' + existed + '</li>';
         alert("( ￣ 3￣)y▂ξ 你已經贏了");
-        alert("( ￣ 3￣)y▂ξ 阿斌醜八怪");
         alert("( ￣ 3￣)y▂ξ 再來一局吧");
         startGame();
       }
       else {
         var done = document.getElementById("guessResults");
         guessResults.innerHTML += '<li class="list-group-item"><span class="label label-danger">' + ab + '</span>' + existed + '</li>';
+      }
+    }
+    document.getElementById("userGuess").onkeyup = function (event) {
+      if (event.keyCode == 13) {
+        doGuess();
       }
     }
     var start = document.getElementById("start");
